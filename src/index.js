@@ -9,24 +9,37 @@ function addTask() {
     } else {
         let li = document.createElement('li');
         li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
-        let span = document.createElement('span');
-        span.innerHTML = "\u00d7"; 
-        li.appendChild(span);
-    }
-    inputBox.value = ''; 
-    saveTodo();
-}
 
-// Attach addTask to the global window object so it can be used in HTML
-window.addTask = addTask;
+        let span = document.createElement('span');
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+
+        listContainer.appendChild(li);
+        inputBox.value = '';
+        saveTodo();
+    }
+}
 
 function saveTodo() {
     localStorage.setItem("data", listContainer.innerHTML);
 }
 
 function showTodo() {
-    listContainer.innerHTML = localStorage.getItem("data");
+    const savedData = localStorage.getItem("data"); 
+    if (savedData) {
+        listContainer.innerHTML = savedData;
+    }
 }
+
+window.addTask = addTask;
+
+listContainer.addEventListener('click', function (e) {
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("checked");
+    } else if (e.target.tagName === 'SPAN') {
+        e.target.parentElement.remove();
+    }
+    saveTodo();
+});
 
 showTodo();
