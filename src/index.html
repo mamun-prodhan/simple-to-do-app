@@ -8,20 +8,20 @@
 </head>
 <body>
     <main>
-        <section>
+        <section class="todo-section">
             <div class="container">
-                <div class="todo-app">
-                    <h2>To Do List <img src="./images/icon.png" alt=""></h2>
+                <article class="todo-app">
+                    <h2>To Do List <img src="./images/icon.png" alt="To Do Icon"></h2>
                     <div class="row">
-                        <input type="text" name="todo" id="input-box" placeholder="Add a task">
+                        <input type="text" name="todo" id="input-box" placeholder="Add a task" aria-label="Add a task">
                         <button onclick="addTask()">Add</button>
                     </div>
-                    <ul id="list-container">
-                        <!-- <li class="checked">Tast 1</li>
-                        <li>Tast 2</li>
-                        <li>Tast 3</li> -->
+                    <ul id="list-container" aria-label="To Do List">
+                        <!-- <li class="checked">Task 1</li>
+                        <li>Task 2</li>
+                        <li>Task 3</li> -->
                     </ul>
-                </div>
+                </article>
             </div>
         </section>
     </main>
